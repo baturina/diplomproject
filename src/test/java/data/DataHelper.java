@@ -1,5 +1,7 @@
 package data;
 
+import lombok.Value;
+
 public class DataHelper {
     private DataHelper() {
     }
@@ -31,7 +33,7 @@ public class DataHelper {
 
     public static RequiredFields getInvalidOwnerWithNumber() {
         return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "24", "101", "121");
+                "APPROVED"), "12", "24", "007", "121");
     }
 
     public static RequiredFields getInvalidOwnerCyrillic() {
@@ -39,7 +41,7 @@ public class DataHelper {
                 "APPROVED"), "6", "24", "Иванов", "444");
     }
 
-    public static RequiredFields getInvalidOwnerWithSymbol() {
+    public static RequiredFields getInValidOwnerWithSymbol() {
         return new RequiredFields(getCardNumber(
                 "APPROVED"), "12", "24", "&*%*", "111");
     }
