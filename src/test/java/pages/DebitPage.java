@@ -67,7 +67,7 @@ public class DebitPage {
         ownerFieldError.shouldBe(visible).shouldHave(exactOwnText("Поддерживается только латиница"));
     }
 
-    public void PaymentWithSpecChar(DataHelper.RequiredFields fields) {
+    public void PaymentWithSpecSymbol(DataHelper.RequiredFields fields) {
         SelenideElement ownerFieldError = $$(".input__sub").get(0);
         cardNumberField.setValue(fields.getCardNumber());
         monthField.setValue(fields.getMonth());

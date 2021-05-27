@@ -23,8 +23,8 @@ public class BuyTest {
             new DashboardPage().openDebitPage().submittingAnEmptyForm();
         }
 
-        //Successful Payment
-        //проверка успошной оплаты
+
+        //успешная оплаты
         @Test
         void successfulPayment() {
             new DashboardPage().openDebitPage()
@@ -32,7 +32,7 @@ public class BuyTest {
             assertEquals("APPROVED", DBHelper.getPaymentStatus());
         }
 
-        //проверка успошной оплаты
+        //проверка успешной оплаты
         @Test
         void shouldInsertPaymentAmount() {
             int expectedAmount = 45_000_00;
@@ -80,7 +80,7 @@ public class BuyTest {
         @Test
         void PaymentWithInvalidOwnerWithSymbol() {
             new DashboardPage().openDebitPage()
-                    .PaymentWithSpecChar(DataHelper.getInValidOwnerWithSymbol());
+                    .PaymentWithSpecSymbol(DataHelper.getInValidOwnerWithSymbol());
             assertNull(DBHelper.getOrderCreditId());
         }
 
