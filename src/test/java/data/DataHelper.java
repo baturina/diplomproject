@@ -9,11 +9,11 @@ public class DataHelper {
     private static String getCardNumber(String card) {
         switch (card.toLowerCase()) {
             case ("approved"):
-                return "2222 2222 2222 2222";
+                return "4276 4276 4276 4276";
             case ("declined"):
-                return "4444 4444 4444 4444";
+                return "4276 4276 4276 4276";
             default:
-                return "4444 4444 4444 4444";
+                return "4276 4276 4276 4276";
         }
     }
 
@@ -56,7 +56,7 @@ public class DataHelper {
                 "APPROVED"), "12", "10", "Ivan Ivanov", "121");
     }
 
-    public static RequiredFields getInValidYear() {
+    public static RequiredFields getInValidFutureYear() {
         return new RequiredFields(getCardNumber(
                 "APPROVED"), "12", "44", "Ivan Ibanov", "121");
     }

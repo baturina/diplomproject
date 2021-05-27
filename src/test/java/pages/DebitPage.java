@@ -30,7 +30,7 @@ public class DebitPage {
     private static SelenideElement errorNotificationTitle = $$(".notification__title").findBy(text("Ошибка"));
     private static SelenideElement errorMessage = $$(".notification__content").findBy(text("отказал"));
 
-    private final int delay = 25;
+    private final int delay = 30;
 
 
 
@@ -111,7 +111,7 @@ public class DebitPage {
         yearFieldError.shouldBe(visible).shouldHave(exactOwnText("Истёк срок действия карты"));
     }
 
-    public void PaymentWithInValidMoreYear(DataHelper.RequiredFields fields) {
+    public void PaymentWithInValidFutureYear(DataHelper.RequiredFields fields) {
         SelenideElement yearFieldError = $$(".input__sub").get(0);
         cardNumberField.setValue(fields.getCardNumber());
         monthField.setValue(fields.getMonth());

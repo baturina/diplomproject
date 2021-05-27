@@ -121,7 +121,7 @@ public class CreditPage {
         yearFieldError.shouldBe(visible).shouldHave(exactOwnText("Истёк срок действия карты"));
     }
 
-    public void PaymentWithInValidMoreYear(DataHelper.RequiredFields fields) {
+    public void PaymentWithInValidFutureYear(DataHelper.RequiredFields fields) {
         SelenideElement yearFieldError = $$(".input__sub").get(0);
         cardNumberField.setValue(fields.getCardNumber());
         monthField.setValue(fields.getMonth());
