@@ -24,7 +24,7 @@ public class BuyTest {
         }
 
 
-        //успешная оплаты
+        //успешная оплата
         @Test
         void successfulPayment() {
             new DashboardPage().openDebitPage()

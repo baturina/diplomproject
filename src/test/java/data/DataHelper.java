@@ -8,7 +8,7 @@ public class DataHelper {
 
     private static String getCardNumber(String card) {
         switch (card.toLowerCase()) {
-            case ("approved"):
+            case ("APPROVED"):
                 return "4276 4276 4276 4276";
             case ("declined"):
                 return "4276 4276 4276 4276";
@@ -28,7 +28,7 @@ public class DataHelper {
 
     public static RequiredFields getValidOwner() {
         return new RequiredFields(getCardNumber(
-                "APPROVED"), "786", "245", "Ivan Ivanov", "121");
+                "APPROVED"), "11", "24", "Ivan Ivanov", "121");
     }
 
     public static RequiredFields getInvalidOwnerWithNumber() {
@@ -38,7 +38,7 @@ public class DataHelper {
 
     public static RequiredFields getInvalidOwnerCyrillic() {
         return new RequiredFields(getCardNumber(
-                "APPROVED"), "6", "24", "Иванов", "444");
+                "APPROVED"), "06", "24", "Иванов", "444");
     }
 
     public static RequiredFields getInValidOwnerWithSymbol() {

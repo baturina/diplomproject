@@ -8,7 +8,7 @@ public class Fields {
     private int amount;
     private String status;
     private String created;
-    private String bank_id;
+    private String BankId;
     private String credit_id;
     private String payment_id;
     private String transaction_id;
