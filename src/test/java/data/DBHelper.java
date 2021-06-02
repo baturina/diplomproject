@@ -1,6 +1,7 @@
 package data;
 
         import lombok.SneakyThrows;
+        import lombok.Value;
         import lombok.val;
         import org.apache.commons.dbutils.QueryRunner;
         import org.apache.commons.dbutils.ResultSetHandler;
