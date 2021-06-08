@@ -1,84 +1,90 @@
 package data;
 
-import lombok.Value;
+import com.github.javafaker.Faker;
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.Random;
 
 public class DataHelper {
+
     private DataHelper() {
     }
 
-    private static String getCardNumber(String card) {
-        switch (card.toLowerCase()) {
-            case ("APPROVED"):
-                return "4276 4276 4276 4276";
-            case ("declined"):
-                return "4276 4276 4276 4276";
-            default:
-                return "4276 4276 4276 4276";
-        }
+    public static String activeCard() {
+        return "4444 4444 4444 4441";
     }
 
-    @Value
-    public static class RequiredFields {
-        String cardNumber;
-        String month;
-        String year;
-        String owner;
-        String CVV;
+    public static String rejectedCard() {
+        return "4444 4444 4444 4442";
     }
 
-    public static RequiredFields getValidOwner() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "11", "24", "Ivan Ivanov", "121");
+    public static String invalidCard() {
+        return "4444 4444 4444";
     }
 
-    public static RequiredFields getInvalidOwnerWithNumber() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "24", "007", "121");
+    public static String notExistCard() {
+        return "1111 1111 1111 1111";
     }
 
-    public static RequiredFields getInvalidOwnerCyrillic() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "06", "24", "Иванов", "444");
+    public static String generateByFakerRandomCVC() {
+        Faker faker = new Faker();
+        return String.valueOf(faker.number().randomNumber(3, true));
     }
 
-    public static RequiredFields getInValidOwnerWithSymbol() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "24", "&*%*", "111");
+    public static String invalidCVC() {
+        return "98";
     }
 
-    public static RequiredFields getInValidMonth() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "15", "24", "Ivan Ivanov", "121");
+    public static String generateByFakerName(String locale) {
+        Faker faker = new Faker(new Locale(locale));
+        return new String(
+                faker.name().firstName() + " " + faker.name().lastName()
+        );
     }
 
-    public static RequiredFields getInValidLastYear() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "10", "Ivan Ivanov", "121");
+    public static String actualYear() {
+        LocalDate date = LocalDate.now();
+        int year = date.getYear() - 2000;
+        return String.valueOf(year);
     }
 
-    public static RequiredFields getInValidFutureYear() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "44", "Ivan Ibanov", "121");
+    public static String lastYear() {
+        LocalDate date = LocalDate.now();
+        int lastYear = date.getYear() - 2001;
+        return String.valueOf(lastYear);
     }
 
-    public static RequiredFields getInvalidCVV() {
-        return new RequiredFields(getCardNumber(
-                "APPROVED"), "12", "26", "Ivan Ivanov", "abc");
+    public static String nextYear() {
+        LocalDate date = LocalDate.now();
+        int nextYear = date.getYear() - 1999;
+        return String.valueOf(nextYear);
     }
 
-    public static RequiredFields getValidValueDeclinedCard() {
-        return new RequiredFields(getCardNumber(
-                "DECLINED"), "12", "26", "Ivan Ivanov", "121");
+    public static String actualMonth() {
+        LocalDate date = LocalDate.now();
+        int month = date.getMonthValue();
+        return String.format("%02d", month);
     }
 
-    public static RequiredFields getInvalidOwnerWithDeclinedCard() {
-        return new RequiredFields(getCardNumber(
-                "DECLINED"), "12", "24", "??!!!!!", "121");
+    public static String lastMonth() {
+        LocalDate date = LocalDate.now();
+        int lastMonth = date.getMonthValue() - 1;
+        return String.format("%02d", lastMonth);
     }
 
-    public static RequiredFields getInvalidCard() {
-        return new RequiredFields(getCardNumber(
-                "INVALID"), "12", "26", "Ivan Vanov", "121");
+    public static String randomMonth() {
+        Random random = new Random();
+        int month = random.nextInt(12) + 1;
+        return String.format("%02d", month);
+    }
+
+    public static String invalidNullMonth() {
+        return "00";
+    }
+
+    public static String invalidNotExistMonth() {
+        LocalDate date = LocalDate.now();
+        int invalidMonth = date.getMonthValue() + 12;
+        return String.format("%02d", invalidMonth);
     }
 }
-

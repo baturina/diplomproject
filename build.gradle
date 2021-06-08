@@ -1,44 +1,43 @@
 plugins {
     id 'java'
-    id 'idea'
-    id "io.freefair.lombok" version "5.3.0"
+    id 'io.freefair.lombok' version '5.3.0'
+    id 'io.qameta.allure' version '2.8.1'
 }
 
 group 'ru.netology'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11
+
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
+allure {
+    autoconfigure = true
+    version = '2.13.8'
+    useJUnit5 {
+        version = '2.13.8'
+    }
+}
+
 repositories {
+    mavenCentral()
     jcenter()
 }
 
 dependencies {
-    testImplementation 'org.slf4j:slf4j-nop:1.7.30'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    testImplementation 'io.rest-assured:rest-assured:4.3.3'
-    testImplementation 'com.google.code.gson:gson:2.8.6'
-    testImplementation 'mysql:mysql-connector-java:8.0.23'
+    testImplementation 'com.codeborne:selenide:5.15.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation 'mysql:mysql-connector-java:8.0.22'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'com.codeborne:selenide:5.18.1'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
-    implementation 'org.projectlombok:lombok:1.18.18'
-    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.30.Final'
+    testImplementation 'io.qameta.allure:allure-selenide:2.13.8'
+    testImplementation 'postgresql:postgresql:9.0-801.jdbc4'
 }
 
 
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    // для запуска с СУБД MySQL
-    systemProperty 'url', System.getProperty('url', 'jdbc:mysql://localhost:3306/app')
-    systemProperty 'user', System.getProperty('user', 'user')
-    systemProperty 'password', System.getProperty('password', 'pass')
-    // для запуска с СУБД PostgreSQL
-//    systemProperty 'url', System.getProperty('url', 'jdbc:postgresql://localhost:5432/app2')
-//    systemProperty 'user', System.getProperty('user', 'user2')
-//    systemProperty 'password', System.getProperty('password', 'pass2')
+    systemProperty 'test.db.url', System.getProperty('test.db.url')
 }
