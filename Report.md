@@ -25,9 +25,10 @@
 
 ### Общие рекомендации
 По результатам тестирования необходимо исправить найденные дефекты:
-https://github.com/baturina/diplomproject/issues/6
-https://github.com/baturina/diplomproject/issues/5
-https://github.com/baturina/diplomproject/issues/4
-https://github.com/baturina/diplomproject/issues/3
-https://github.com/baturina/diplomproject/issues/2
-https://github.com/baturina/diplomproject/issues/1
+
+1) https://github.com/baturina/diplomproject/issues/6
+2) https://github.com/baturina/diplomproject/issues/5
+3) https://github.com/baturina/diplomproject/issues/4
+4) https://github.com/baturina/diplomproject/issues/3
+5) https://github.com/baturina/diplomproject/issues/2
+6) https://github.com/baturina/diplomproject/issues/1
